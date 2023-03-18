@@ -62,7 +62,7 @@ const handleUpload = async (req, res, next, action) => {
     );
     res.status(200).json({ message: "Schema uploaded successfully", result });
   } catch (e) {
-    res.status(400).json({ error: true, e });
+    res.status(400).json({ error: true, message: e.message });
   }
 };
 
