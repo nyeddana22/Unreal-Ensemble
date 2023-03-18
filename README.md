@@ -12,6 +12,7 @@ API Documentation -
 POST - `/getActions`
 
 Parameters - 
+```
 {
     initiator String The name of the character initiating the action
     responder String The name of the recipient of the action
@@ -21,6 +22,7 @@ Parameters -
     numActionsPerIntent Number How many actions should come from each intent.
     numActionsPerGroup Number How many terminals should come from any given 'action group'
 }
+```
 
 Returns:
 A list of terminals, with roles bound with characters, that represent what the initiator most wants to do with the responder.
@@ -50,18 +52,22 @@ POST - `/doAction`
 Given a bound action object, like those returned by ensemble.getAction(), performs the action by executing all of its effects.
 
 Parameters
+```
 {
     boundAction Object
 }
+```
 
 POST - `/runTriggerRules`
 
 Apply rules that conditionally change social state
 
 Parameters
+```
 {
-    cast	Array	the array of cast members
+    cast    Array   the array of cast members
 }
+```
 
 Returns:
 An object representing the changes made to the social state as a result of running these trigger rules.
@@ -71,9 +77,11 @@ POST - `/get`
 Get a particular social state value
 
 Parameters
+```
 {
-    getPredicate Object
+    getPredicate    Object
 }
+```
 
 Returns:
 matchedResults the array holding the found predicates which match the query
@@ -81,9 +89,11 @@ matchedResults the array holding the found predicates which match the query
 POST - `/calculateVolition`
 
 Parameters
+```
 {
-    cast	Array	an array of the cast of characters to calculate volition for
+    cast    Array   an array of the cast of characters to calculate volition for
 }
+```
 
 Returns:
 calculatedVolitions a dictionary containing the cast and their volitions
@@ -93,9 +103,11 @@ POST - `/setupNextTimeStep`
 Catches the SFDB's currentTimeStep to the timeStep specified.
 
 Parameters
+```
 {
-    timeStep	Number	the timeStep to catch up the SFDB to. If omitted, assumes the currentTimeStep + 1.
+    timeStep    Number  the timeStep to catch up the SFDB to. If omitted, assumes the currentTimeStep + 1.
 }
+```
 
 Returns:
 The current timestep.
