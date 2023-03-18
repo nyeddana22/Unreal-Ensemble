@@ -48,18 +48,25 @@ exports.getActions = async (req, res) => {
 
 const handleUpload = async (req, res, next, action) => {
   try {
-    await new Promise((resolve, reject) => {
-      upload(req, res, function (err) {
-        if (err) reject(err);
-        else if (!req.file) reject(new Error("No file uploaded"));
-        else resolve();
+    let data;
+    if (req.file) {
+      await new Promise((resolve, reject) => {
+        upload(req, res, function (err) {
+          if (err) reject(err);
+          else if (!req.file) reject(new Error("No file uploaded"));
+          else resolve();
+        });
       });
-    });
+    } else if (req.body && Object.keys(req.body).length) {
+      data = req.body;
+    } else {
+      throw new Error("No file or JSON data provided");
+    }
 
-    const filename = req.file.filename;
-    const result = action(
-      JSON.parse(fs.readFileSync(`uploads/${filename}`, "utf8"))
-    );
+    const filename = req.file?.filename;
+    const result = filename
+      ? action(JSON.parse(fs.readFileSync(`uploads/${filename}`, "utf8")))
+      : action(data.data);
     res.status(200).json({ message: "Schema uploaded successfully", result });
   } catch (e) {
     res.status(400).json({ error: true, message: e.message });
