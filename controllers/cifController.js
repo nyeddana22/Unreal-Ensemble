@@ -26,20 +26,17 @@ exports.getActions = async (req, res) => {
       cast,
       numIntents,
       numActionsPerIntent,
-      numActionsPerGroup,
+      //   numActionsPerGroup,
     } = req.body;
 
-    const actionParams = {
-      ...(initiator && { initiator }),
-      ...(responder && { responder }),
-      ...(volition && { volition }),
-      ...(cast && { cast }),
-      ...(numIntents && { numIntents }),
-      ...(numActionsPerIntent && { numActionsPerIntent }),
-      ...(numActionsPerGroup && { numActionsPerGroup }),
-    };
-
-    const possibleActions = cif.getActions(actionParams);
+    const possibleActions = cif.getActions(
+      initiator,
+      responder,
+      volition,
+      cast,
+      numIntents,
+      numActionsPerIntent
+    );
     res.status(200).json({ possibleActions: possibleActions });
   } catch (e) {
     res.status(400).json({ error: true, e });
@@ -132,7 +129,7 @@ exports.calculateVolition = async (req, res) => {
     const { cast } = req.body;
 
     const volitions = cif.calculateVolition(cast);
-    res.status(200).json({ volitions });
+    res.status(200).json({ volitions: volitions.dump() });
   } catch (e) {
     res.status(400).json({ error: true, e });
   }
@@ -148,6 +145,32 @@ exports.setupNextTimeStep = async (req, res) => {
 
     cif.setupNextTimeStep(actionParams);
     res.status(200).json({ message: "Setup next time step successfully" });
+  } catch (e) {
+    res.status(400).json({ error: true, e });
+  }
+};
+
+exports.volitionAndAction = async (req, res) => {
+  try {
+    const {
+      initiator,
+      responder,
+      cast,
+      numIntents,
+      numActionsPerIntent,
+      //   numActionsPerGroup,
+    } = req.body;
+
+    const volitions = cif.calculateVolition(cast);
+    const possibleActions = cif.getActions(
+      initiator,
+      responder,
+      volitions,
+      cast,
+      numIntents,
+      numActionsPerIntent
+    );
+    res.status(200).json({ possibleActions });
   } catch (e) {
     res.status(400).json({ error: true, e });
   }
