@@ -5715,22 +5715,34 @@ var getIsCharacterEliminated  = function(characterName){
 	socialRecord.getIsCharacterEliminated(characterName);
 };
 
-//public facing function to make two characters perform an action.
-//TODO: doActon doesn't seem to exist anymore?
-/**
- * @method doAction
- * @private
- * @memberOf ensemble
- * @description In theory this is a means to just run an action... though it seems as if the corresponding function in ActionLibrary.js hasn't actually been written? Very odd...
- * @param {String} actionName the name of the action to perform.
- * @param {String} initiator the name of the character to perform the action.
- * @param {String} responder The name of the character who will be the recipient of the action.
- * @param {Object} registeredVolitions A calculated volitions object (created after calling ensemble.calculateVolitions)
- * @example  ensemble.doAction("AskOut", "Bob", "Carol", volitionObject)
+// //public facing function to make two characters perform an action.
+// //TODO: doActon doesn't seem to exist anymore?
+// /**
+//  * @method doAction
+//  * @private
+//  * @memberOf ensemble
+//  * @description In theory this is a means to just run an action... though it seems as if the corresponding function in ActionLibrary.js hasn't actually been written? Very odd...
+//  * @param {String} actionName the name of the action to perform.
+//  * @param {String} initiator the name of the character to perform the action.
+//  * @param {String} responder The name of the character who will be the recipient of the action.
+//  * @param {Object} registeredVolitions A calculated volitions object (created after calling ensemble.calculateVolitions)
+//  * @example  ensemble.doAction("AskOut", "Bob", "Carol", volitionObject)
+//  */
+// var doAction = function(actionName, initiator, responder, registeredVolitions){
+// 	actionLibrary.doAction(actionName, initiator, responder, registeredVolitions);
+// };
+
+ /**
+ * @method  doAction
+ * @description Performs a boundAction by executing all of its effects.
+ * @public
+ * @param boundAction [The boundAction to execute, as returned by ensemble.getAction(..) or ensemble.getActions(..).]
  */
-var doAction = function(actionName, initiator, responder, registeredVolitions){
-	actionLibrary.doAction(actionName, initiator, responder, registeredVolitions);
-};
+ var doAction = function(boundAction){
+	for (let effect of boundAction.effects){
+		ensemble.set(effect);
+	}
+}
 
 
 /**

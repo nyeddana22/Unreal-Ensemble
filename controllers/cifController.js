@@ -94,7 +94,6 @@ exports.addHistory = async (req, res, next) => {
 exports.doAction = async (req, res) => {
   try {
     const { boundAction } = req.body;
-
     const possibleActions = cif.doAction(boundAction);
     res.status(200).json({ possibleActions: possibleActions });
   } catch (e) {
@@ -117,7 +116,7 @@ exports.get = async (req, res) => {
   try {
     const { getPredicate } = req.body;
 
-    const results = cif.get(getPredicate);
+    const results = cif.get(getPredicate, 0, 0);
     res.status(200).json({ results });
   } catch (e) {
     res.status(400).json({ error: true, e });
