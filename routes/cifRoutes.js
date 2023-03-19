@@ -15,6 +15,6 @@ router.post("/runTriggerRules", cifController.runTriggerRules);
 router.post("/get", cifController.get);
 router.post("/calculateVolition", cifController.calculateVolition);
 router.post("/setupNextTimeStep", cifController.setupNextTimeStep);
-router.post("/volitionAndCast", cifController.volitionAndAction);
+router.post("/volitionAndAction", cifController.volitionAndAction);
 
 module.exports = router;
