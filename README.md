@@ -4,11 +4,13 @@ Creating an API gateway to combine Comme Il Faut (CiF), a social interaction gam
 
 # Steps to run the package
 
-1. Install dependecies - `npm i`
-2. Create an uploads folder to store the schema - `mkdir uploads`
+1. Install dependencies - `npm i`
+2. Create an uploads folder within the Unreal-Ensemble folder to store the uploaded JSON files - `mkdir uploads`
 3. Run the server - `npm start`
 
-API Documentation -
+The schema package containing the schema, cast, history, volitionRules and actions can be found in the data folder.
+
+# API Documentation
 
 POST - `/getActions`
 
