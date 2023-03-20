@@ -1,0 +1,37 @@
+{
+    "data": {
+        "history": [
+            {
+                "pos": 0,
+                "data": [
+                    {
+                        "category": "trait",
+                        "type": "named you",
+                        "first": "you",
+                        "value": true
+                    },
+                    {
+                        "category": "trait",
+                        "type": "named npc",
+                        "first": "npc",
+                        "value": true
+                    },
+                    {
+                        "category": "relationship",
+                        "type": "friends",
+                        "first": "you",
+                        "second": "npc",
+                        "value": false
+                    },
+                    {
+                        "category": "relationship",
+                        "type": "enemies",
+                        "first": "you",
+                        "second": "npc",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

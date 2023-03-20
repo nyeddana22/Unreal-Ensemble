@@ -1,0 +1,105 @@
+{
+    "data": {
+        "fileName": "actions.json",
+        "actions": [
+            {
+                "name": "moveToward",
+                "displayName": "You Move Toward the NPC",
+                "influenceRules": [],
+                "conditions": [],
+                "intent": {
+                    "category": "relationship",
+                    "type": "friends",
+                    "intentType": true,
+                    "first": "npc",
+                    "second": "you"
+                },
+                "leadsTo": ["becomeFriends"]
+            },
+            {
+                "name": "becomeFriends",
+                "conditions": [],
+                "influenceRules": [
+                    {
+                        "name": "Move closer made them friends",
+                        "conditions": [
+                            {
+                                "category": "relationship",
+                                "type": "friends",
+                                "first": "npc",
+                                "second": "you",
+                                "value": false
+                            }
+                        ],
+                        "weight": 10
+                    }
+                ],
+                "effects": [
+                    {
+                        "category": "relationship",
+                        "type": "friends",
+                        "first": "npc",
+                        "second": "you",
+                        "value": true
+                    },
+                    {
+                        "category": "relationship",
+                        "type": "enemies",
+                        "first": "npc",
+                        "second": "you",
+                        "value": false
+                    }
+                ]
+            },
+            {
+                "name": "moveAway",
+                "displayName": "You Move Away from the NPC",
+                "influenceRules": [],
+                "conditions": [],
+                "intent": {
+                    "category": "relationship",
+                    "type": "enemies",
+                    "intentType": true,
+                    "first": "npc",
+                    "second": "you"
+                },
+                "leadsTo": ["becomeEnemies"]
+            },
+            {
+                "name": "becomeEnemies",
+                "conditions": [],
+                "influenceRules": [
+                    {
+                        "name": "Moving away made them enemies",
+                        "conditions": [
+                            {
+                                "category": "relationship",
+                                "type": "enemies",
+                                "first": "npc",
+                                "second": "you",
+                                "value": false
+                            }
+                        ],
+                        "weight": 10
+                    }
+                ],
+                "effects": [
+                    {
+                        "category": "relationship",
+                        "type": "friends",
+                        "first": "npc",
+                        "second": "you",
+                        "value": false
+                    },
+                    {
+                        "category": "relationship",
+                        "type": "enemies",
+                        "first": "npc",
+                        "second": "you",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

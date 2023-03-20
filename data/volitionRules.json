@@ -1,0 +1,76 @@
+{
+    "data": {
+        "fileName": "volitionRules",
+        "type": "volition",
+        "rules": [
+            {
+                "name": "NPC want to become friends with you",
+                "conditions": [
+                    {
+                        "category": "relationship",
+                        "type": "enemies",
+                        "first": "npc",
+                        "second": "you",
+                        "value": true
+                    }
+                ],
+                "effects": [
+                    {
+                        "category": "relationship",
+                        "type": "friends",
+                        "first": "npc",
+                        "second": "you",
+                        "weight": 10,
+                        "intentType": true,
+                        "value": true
+                    },
+                    {
+                        "category": "relationship",
+                        "type": "enemies",
+                        "first": "npc",
+                        "second": "you",
+                        "weight": -10,
+                        "intentType": true,
+                        "value": false
+                    }
+                ],
+                "origin": "volitionRules",
+                "id": "volitionRules_1"
+            },
+            {
+                "name": "NPC wants to become enemies with you",
+                "conditions": [
+                    {
+                        "category": "relationship",
+                        "type": "friends",
+                        "first": "npc",
+                        "second": "you",
+                        "value": true
+                    }
+                ],
+                "effects": [
+                    {
+                        "category": "relationship",
+                        "type": "enemies",
+                        "first": "npc",
+                        "second": "you",
+                        "weight": 10,
+                        "intentType": true,
+                        "value": true
+                    },
+                    {
+                        "category": "relationship",
+                        "type": "friends",
+                        "first": "npc",
+                        "second": "you",
+                        "weight": -10,
+                        "intentType": true,
+                        "value": false
+                    }
+                ],
+                "origin": "volitionRules",
+                "id": "volitionRules_2"
+            }
+        ]
+    }
+}

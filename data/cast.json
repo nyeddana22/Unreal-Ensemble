@@ -1,0 +1,13 @@
+{
+  "data": {
+    "cast": {
+      "you": {
+        "name": "You"
+      },
+      "npc": {
+        "name": "NPC"
+      }
+    }
+  }
+}
+

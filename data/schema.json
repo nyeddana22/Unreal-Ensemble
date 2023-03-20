@@ -1,0 +1,24 @@
+{
+  "data": {
+      "schema": [
+          {
+              "category": "relationship",
+              "isBoolean": true,
+              "directionType": "reciprocal",
+              "types": ["friends", "enemies"],
+              "defaultValue": false,
+              "actionable": true
+          },
+          {
+              "category": "trait",
+              "isBoolean": true,
+              "directionType": "undirected",
+              "types": ["named you", "named npc"],
+              "actionable": false,
+              "defaultValue": false
+          }
+      ]
+  }
+}
+
+
